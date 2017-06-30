@@ -22,22 +22,6 @@ function printheader(){
  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <Project DefaultTargets=\"Build\" ToolsVersion=\"14.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">
   <ItemGroup Label=\"ProjectConfigurations\">
-    <ProjectConfiguration Include=\"Debug|ARM\">
-      <Configuration>Debug</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include=\"Release|ARM\">
-      <Configuration>Release</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include=\"Debug|x86\">
-      <Configuration>Debug</Configuration>
-      <Platform>x86</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include=\"Release|x86\">
-      <Configuration>Release</Configuration>
-      <Platform>x86</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include=\"Debug|x64\">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -58,22 +42,6 @@ function printheader(){
     <LinuxProjectType>{FC1A4D80-50E9-41DA-9192-61C0DBAA00D2}</LinuxProjectType>
   </PropertyGroup>
   <Import Project=\"\$(VCTargetsPath)\Microsoft.Cpp.Default.props\" />
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|ARM'\" Label=\"Configuration\">
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|ARM'\" Label=\"Configuration\">
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x86'\" Label=\"Configuration\">
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x86'\" Label=\"Configuration\">
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x64'\" Label=\"Configuration\">
     <UseDebugLibraries>true</UseDebugLibraries>
     <ConfigurationType>Makefile</ConfigurationType>
@@ -86,23 +54,10 @@ function printheader(){
   <ImportGroup Label=\"ExtensionSettings\" />
   <ImportGroup Label=\"Shared\" />
   <ImportGroup Label=\"PropertySheets\" />
-  <PropertyGroup Label=\"UserMacros\" />
-    <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|ARM'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
-  </PropertyGroup>
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x64'\">
     <LocalRemoteCopySources>false</LocalRemoteCopySources>
   </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x86'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
-  </PropertyGroup>
-    <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|ARM'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
-  </PropertyGroup>
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x64'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
-  </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x86'\">
     <LocalRemoteCopySources>false</LocalRemoteCopySources>
   </PropertyGroup>"
 }
@@ -116,7 +71,7 @@ function printfooter(){
 
 function listothers(){
  echo "  <ItemGroup>"
- for i in $(find . -not -path '*/\.*' -type f ! -iname "*.c" ! -iname "*.cpp" ! -iname "*.h" ! -iname "*.txt" ! -iname "*.o" ! -iname "*.vcxproj" ! -iname "*.filters")
+ for i in $(find . -not -path '*/\.*' -type f ! -iname "*.c" ! -iname "*.cpp" ! -iname "*.cc" ! -iname "*.h" ! -iname "*.hpp" ! -iname "*.txt" ! -iname "*.o" ! -iname "*.vcxproj" ! -iname "*.filters")
  do
    d=${i%/*}
    d=${d//\//\\}
@@ -140,7 +95,7 @@ function listtxt(){
 
 function listcompile(){
  echo "  <ItemGroup>"
- for i in $(find . -not -path '*/\.*' -type f -iname "*.c" -or -iname "*.cpp")
+ for i in $(find . -not -path '*/\.*' -type f -iname "*.c" -or -iname "*.cpp" -or -iname "*.cc")
  do
    d=${i%/*}
    d=${d//\//\\}
@@ -153,11 +108,10 @@ function listcompile(){
 
 function listinclude(){
  echo "  <ItemGroup>"
- for i in $(find . -not -path '*/\.*' -type f -iname "*.h")
+ for i in $(find . -not -path '*/\.*' -type f -iname "*.h" -or -iname "*.hpp")
  do
    d=${i%/*}
    d=${d//\//\\}
-   d=${d/.}
    f=${i##*/}
    printf "    <ClInclude Include=\"%s\\%s\" />\n" "$d" "$f"
  done
