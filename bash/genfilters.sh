@@ -54,7 +54,7 @@ function listothers(){
    then
      printf "    <None Include=\"%s\\%s\" />\n" "$d" "$f"
    else
-     printf "    <None Include=\"%s\\%s\" >\n" "$d" "$f"
+     printf "    <None Include=\"%s\\%s\">\n" "$d" "$f"
      printf "      <Filter>%s</Filter>\n" "$fp"
      printf "    </None>\n"
    fi

@@ -55,10 +55,10 @@ function printheader(){
   <ImportGroup Label=\"Shared\" />
   <ImportGroup Label=\"PropertySheets\" />
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x64'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
+    <LocalRemoteCopySources>true</LocalRemoteCopySources>
   </PropertyGroup>
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x64'\">
-    <LocalRemoteCopySources>false</LocalRemoteCopySources>
+    <LocalRemoteCopySources>true</LocalRemoteCopySources>
   </PropertyGroup>"
 }
 
