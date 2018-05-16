@@ -28,7 +28,7 @@ function printfooter(){
 
 function listfilters(){
  echo "  <ItemGroup>"
- for i in $(find . -not -path '*/\.*' -type d)
+ for i in $(find . -mindepth 1 -not -path '*/\.*' -type d)
  do
    f=${i##./}
    f=${f//\//\\}

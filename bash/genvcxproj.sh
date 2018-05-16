@@ -20,45 +20,37 @@
 
 function printheader(){
  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<Project DefaultTargets=\"Build\" ToolsVersion=\"14.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">
+<Project DefaultTargets=\"Build\" ToolsVersion=\"15.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">
   <ItemGroup Label=\"ProjectConfigurations\">
     <ProjectConfiguration Include=\"Debug|x64\">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include=\"Release|x64\">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label=\"Globals\">
-    <ProjectGuid>{d14472f1-e80c-4d22-a2b5-6694cdc04c48}</ProjectGuid>
+    <ProjectGuid>{354d0c76-faf2-4532-9872-1c2f729f4fb3}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>makefile</RootNamespace>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <RootNamespace>setcover</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
-    <LinuxProjectType>{FC1A4D80-50E9-41DA-9192-61C0DBAA00D2}</LinuxProjectType>
+    <LinuxProjectType>{2238F9CD-F817-4ECC-BD14-2524D2669B35}</LinuxProjectType>
   </PropertyGroup>
   <Import Project=\"\$(VCTargetsPath)\Microsoft.Cpp.Default.props\" />
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x64'\" Label=\"Configuration\">
     <UseDebugLibraries>true</UseDebugLibraries>
     <ConfigurationType>Makefile</ConfigurationType>
   </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x64'\" Label=\"Configuration\">
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>Makefile</ConfigurationType>
-  </PropertyGroup>
   <Import Project=\"\$(VCTargetsPath)\Microsoft.Cpp.props\" />
   <ImportGroup Label=\"ExtensionSettings\" />
   <ImportGroup Label=\"Shared\" />
   <ImportGroup Label=\"PropertySheets\" />
+  <PropertyGroup Label=\"UserMacros\" />
   <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|x64'\">
-    <LocalRemoteCopySources>true</LocalRemoteCopySources>
-  </PropertyGroup>
-  <PropertyGroup Condition=\"'\$(Configuration)|\$(Platform)'=='Release|x64'\">
-    <LocalRemoteCopySources>true</LocalRemoteCopySources>
+    <RemoteBuildCommandLine>make</RemoteBuildCommandLine>
+    <RemoteReBuildCommandLine>make</RemoteReBuildCommandLine>
+    <RemoteCleanCommandLine>make clean</RemoteCleanCommandLine>
   </PropertyGroup>"
 }
 
