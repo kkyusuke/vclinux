@@ -30,7 +30,7 @@ function printheader(){
   <PropertyGroup Label=\"Globals\">
     <ProjectGuid>{354d0c76-faf2-4532-9872-1c2f729f4fb3}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>setcover</RootNamespace>
+    <RootNamespace>makefile</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
